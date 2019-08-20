@@ -45,12 +45,12 @@ define('WP_HOME', $protocol_to_use . HTTP_HOST);
 
 // ** MySQL settings - You can get this info from your web host ** //
 if ($onGae) {
-    /** The name of the local database for WordPress */
-    define('DB_NAME', 'wordpress');
-    /** Local environment MySQL login info */
-    define('DB_HOST', '127.0.0.1');
-    define('DB_USER', 'root');
-    define('DB_PASSWORD', 'password');
+    /** The name of the Cloud SQL database for WordPress */
+    define('DB_NAME',     getenv('DB_NAME'));
+    /** Production login info */
+    define('DB_HOST',     getenv('DB_HOST'));
+    define('DB_USER',     getenv('DB_USER'));
+    define('DB_PASSWORD', getenv('DB_PASS'));
 } else {
     /** The name of the local database for WordPress */
     define('DB_NAME', 'wordpress');
