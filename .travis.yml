@@ -8,7 +8,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_210da2545c7c_key -iv $encrypted_210da2545c7c_iv
   -in rackdeploy-e4100ec9a353.json.enc -out rackdeploy-e4100ec9a353.json -d
 
-before_deploy: "./deploy/create_env_file.sh"
+before_deploy: "create_env_file.sh"
 
 deploy:
   provider: gae
