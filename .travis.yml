@@ -1,7 +1,4 @@
 deploy:
   provider: gae
-  keyfile: rackdeploy-e4100ec9a353.json
+  keyfile: abc
   project: rackdeploy
-before_install:
-- openssl aes-256-cbc -K $encrypted_210da2545c7c_key -iv $encrypted_210da2545c7c_iv
-  -in rackdeploy-e4100ec9a353.json.enc -out rackdeploy-e4100ec9a353.json -d
