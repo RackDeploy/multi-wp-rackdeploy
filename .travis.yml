@@ -1,3 +1,6 @@
+language: php
+php:
+  - '7.2'
 deploy:
   provider: gae
   keyfile: "rackdeploy-e4100ec9a353.json"
