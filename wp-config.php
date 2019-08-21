@@ -45,6 +45,7 @@ define('WP_HOME', $protocol_to_use . HTTP_HOST);
 
 // ** MySQL settings - You can get this info from your web host ** //
 if ($onGae) {
+    require_once(ABSPATH . 'kms.php');
     /** The name of the Cloud SQL database for WordPress */
     define('DB_NAME',     getenv('DB_NAME'));
     /** Production login info */
