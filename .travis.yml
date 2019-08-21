@@ -17,15 +17,15 @@ jobs:
         provider: gae
         keyfile: "rackdeploy-e4100ec9a353.json"
         project: rackdeploy-staging
-        config: app.yaml
+        config: app.staging.yaml
         on: staging
     - stage: test staging
-      script: 'curl http://sf-stages-staging.herokuapp.com'
+      script: 'curl http://rackdeploy-staging.appspot.com]'
     - stage: deploy to production
       script: /bin/true
       deploy:
         provider: gae
         keyfile: "rackdeploy-e4100ec9a353.json"
         project: rackdeploy
-        config: app.yaml
+        config: app.prod.yaml
         on: prod
