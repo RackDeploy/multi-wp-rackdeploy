@@ -4,7 +4,7 @@ steps:
   - kms
   - decrypt
   - --ciphertext-file=deploy/rackdeploy-staging-28be1528dc28.json.enc
-  - --plaintext-file=/service_account.json
+  - --plaintext-file=deploy/service_account.json
   - --location=global
   - --keyring=stg-keyring
   - --key=stg-cryptokey
