@@ -6,8 +6,8 @@ steps:
   - --ciphertext-file=deploy/$BRANCH_NAME-service_account.json.enc
   - --plaintext-file=deploy/service_account.json
   - --location=global
-  - --keyring=stg-keyring
-  - --key=stg-cryptokey
+  - --keyring=$BRANCH_NAME-keyring
+  - --key=$BRANCH_NAME-cryptokey
 - name: gcr.io/cloud-builders/gcloud
   args:
   - kms
@@ -15,8 +15,8 @@ steps:
   - --ciphertext-file=deploy/$BRANCH_NAME-database.php.enc
   - --plaintext-file=database.php
   - --location=global
-  - --keyring=stg-keyring
-  - --key=stg-cryptokey
+  - --keyring=$BRANCH_NAME-keyring
+  - --key=$BRANCH_NAME-cryptokey
 - name: "gcr.io/cloud-builders/gcloud"
-  args: ["app", "deploy", "--project=$PROJECT_ID", "app.$BRANCH_NAME.yaml"]
+  args: ["app", "deploy", "--project=$PROJECT_ID", "app.yaml"]
 timeout: "1600s"
