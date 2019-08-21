@@ -1,16 +1,31 @@
 language: php
 php:
   - '7.2'
-script:
-- echo "skipping tests"
 
-before_install:
-- openssl aes-256-cbc -K $encrypted_210da2545c7c_key -iv $encrypted_210da2545c7c_iv
-  -in rackdeploy-e4100ec9a353.json.enc -out rackdeploy-e4100ec9a353.json -d
-
-before_deploy: "./create_env_file.sh"
-
-deploy:
-  provider: gae
-  keyfile: "rackdeploy-e4100ec9a353.json"
-  project: rackdeploy
+jobs:
+  include:
+    - stage: unit tests
+      script: echo one
+    - stage: unit tests
+      script: echo two
+    - stage: deploy to staging
+      script: skip
+      before_install:
+        - openssl aes-256-cbc -K $encrypted_210da2545c7c_key -iv $encrypted_210da2545c7c_iv
+          -in rackdeploy-e4100ec9a353.json.enc -out rackdeploy-e4100ec9a353.json -d
+      deploy:
+        provider: gae
+        keyfile: "rackdeploy-e4100ec9a353.json"
+        project: rackdeploy-staging
+        config: app.yaml
+        on: staging
+    - stage: test staging
+      script: 'curl http://sf-stages-staging.herokuapp.com'
+    - stage: deploy to production
+      script: /bin/true
+      deploy:
+        provider: gae
+        keyfile: "rackdeploy-e4100ec9a353.json"
+        project: rackdeploy
+        config: app.yaml
+        on: prod
