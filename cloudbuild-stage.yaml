@@ -1,4 +1,13 @@
 steps:
+- name: gcr.io/cloud-builders/gcloud
+  args:
+  - kms
+  - decrypt
+  - --ciphertext-file=deploy/rackdeploy-staging-28be1528dc28.json.enc
+  - --plaintext-file=/service_account.json
+  - --location=global
+  - --keyring=stg-keyring
+  - --key=stg-cryptokey
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy", "--project=rackdeploy-staging", "app.staging.yaml"]
 timeout: "1600s"

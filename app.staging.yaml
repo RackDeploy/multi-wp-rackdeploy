@@ -8,6 +8,8 @@ entrypoint: serve gae-app.php
 
 env_variables:
   ENV: staging
+  PROJ: rackdeploy-staging
+  GOOGLE_APPLICATION_CREDENTIALS: /service_account.json
 
 # Defines static handlers to serve WordPress assets
 handlers:
