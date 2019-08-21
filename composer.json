@@ -1,0 +1,6 @@
+{
+    "require": {
+        "php" : "7.2.*",
+        "google/cloud-kms": "^1.6"
+    }
+}
